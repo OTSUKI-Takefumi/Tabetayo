@@ -1,0 +1,70 @@
+<% @calorie, @protein, @fat, @carbohydrate = 0, 0, 0, 0 %>
+
+<% meals.each do |meal| %>
+<% @calorie += meal.food.calorie * meal.quantity %>
+<% @protein += meal.food.protein  * meal.quantity %>
+<% @fat += meal.food.fat  * meal.quantity %>
+<% @carbohydrate += meal.food.carbohydrate  * meal.quantity %>
+<% end %>
+
+<% if meals.empty? %>
+  <p>まだ記録をしていない様です。</p>
+<% else %>
+
+  <h5>栄養素</h5>
+  <table class="table-borderless w-75 mb-5">
+    <tr>
+      <td>
+        カロリー：
+      </td>
+      <td>
+        <%= @calorie.round(0) %>kcal
+      </td>
+    </tr>
+     <tr>
+      <td>
+        タンパク質：
+      </td>
+      <td>
+        <%= @protein.round(1) %>g
+      </td>
+    </tr>
+         <tr>
+      <td>
+        脂質：
+      </td>
+      <td>
+        <%= @fat.round(1) %>g
+      </td>
+    </tr>
+         <tr>
+      <td>
+        炭水化物：
+      </td>
+      <td>
+        <%= @carbohydrate.round(1) %>g
+      </td>
+    </tr>
+  </table>
+<% end %>
+
+<table class="table-borderless w-75 mb-5">
+<% meals.each do |meal| %>
+
+    <tr>
+      <td>
+        <%= meal.food.name %>(<%= meal.quantity %>)
+      </td>
+      <% if @member == @current_member %>
+      <td>
+        <%= link_to "削除", meal_path(meal),data:{ "turbo-method": :delete },class:"btn btn-danger" %>
+      </td>
+      <% end %>
+      </tr>
+<% end %>
+</table>
+
+<% if @member == @current_member %>
+<p><%= link_to "> New Meal",new_meal_path(timeframe: @timeframe,date: @date),class:"text-decoration-none" %></p>
+<% end %>
+

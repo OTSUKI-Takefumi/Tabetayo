@@ -1,0 +1,73 @@
+<header class="shadow header-bg">
+  <div class="container col-sm-12 col-md-10 col-lg-12 col-xl-12 d-flex justify-content-between pr-0">
+      <a class="navbar-brand p-3 font-weight-bold logo">
+          <%= image_tag 'logo.png', size: "50x50" %>タベタヨ
+        </a>
+  
+    <!--リンク一覧-->
+    <div class="row-auto justify-content-end d-flex align-content-center flex-wrap">
+     <nav class="navbar navbar-expand-lg navbar-expand-md navbar-dark pt-3">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+          <% if admin_signed_in? %>
+            <li class="m-3 d-flex align-items-center">
+              ようこそ、管理者さん！
+            </li>
+            <li class="m-3">
+              <%= link_to "Users", admin_members_path, class: 'nav-link text-center text-dark border border-secondary rounded', style: "width: 80px" %>
+            </li>
+            <li class="m-3">
+              <%= link_to "Comments", admin_comments_path, class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
+            <li class="m-3">
+              <%= link_to "Foods", admin_foods_path, class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
+            <li class="m-3">
+              <%= link_to "Nices", admin_nices_path, class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
+            <li class="m-3">
+              <%= link_to "Logout", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
+
+          <% elsif user_signed_in? %>
+
+            <li class="m-3 d-flex align-items-center">
+              ようこそ、<%= current_user.name %>さん！
+            </li>
+            <li class="m-3 nav-item">
+              <%= link_to "このサイトについて", about_path, class: 'nav-link text-center text-dark border border-secondary rounded', style: "width: 80px" %>
+            </li>
+            <li class="m-3 nav-item">
+              <%= link_to "マイページ", member_path(current_user.id, year: Time.zone.now.year, month: Time.zone.now.month, day: Time.zone.now.day), class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
+            <li class="m-3 nav-item">
+              <%= link_to "他のユーザーを見る", members_path, class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
+            <li class="m-3 nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
+          <% else %>
+
+            <li class="m-3 nav-item">
+              
+              <%= link_to "About", about_path, class: 'nav-link text-center text-dark border border-secondary rounded', style: "width: 80px" %>
+            </li>
+            <li class="m-3 nav-item">
+              
+              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
+            <li class="m-3 nav-item">
+              
+              <%= link_to "ログイン", root_path, class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
+
+          <% end %>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,85 @@
+ja:
+  #月選択の文字化け対策
+  date:
+    month_names: [~, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+  # 目的の日本語化
+  enums:
+    user:
+      purpose:
+        training: 筋力トレーニング
+        diet: ダイエット
+        health: 健康維持
+        etc: その他
+
+      activity:
+        sedentary: 日常的にほぼ運動しない
+        light: 軽い運動
+        moderate: 中等度の運動
+        intense: 激しい運動
+        very_intense: 非常に激しい運動
+
+      sex:
+        men: 男性
+        women: 女性
+
+
+    nice:
+      timeframe:
+        morning: 朝食
+        lunch: 昼食
+        dinner: 夕食
+        snack: 間食
+
+    comment:
+      timeframe:
+        morning: 朝食
+        lunch: 昼食
+        dinner: 夕食
+        snack: 間食
+
+
+  activerecord:
+    errors:
+      models:
+        food:
+          attributes:
+            name:
+              blank: を入力してください。
+              too_short: は%{count}文字以上に設定して下さい。
+              too_long: は%{count}文字以下に設定して下さい。
+            calorie:
+              blank: を入力してください。
+              not_a_number: は数字で入力してください。
+              too_short: は%{count}文字以上に設定して下さい。
+              too_long: は%{count}文字以下に設定して下さい。
+            protein:
+              blank: を入力してください。
+              not_a_number: は数字で入力してください。
+              too_short: は%{count}文字以上に設定して下さい。
+              too_long: は%{count}文字以下に設定して下さい。
+            fat:
+              blank: を入力してください。
+              not_a_number: は数字で入力してください。
+              too_short: は%{count}文字以上に設定して下さい。
+              too_long: は%{count}文字以下に設定して下さい。
+            carbohydrate:
+              blank: を入力してください。
+              not_a_number: は数字で入力してください。
+              too_short: は%{count}文字以上に設定して下さい。
+              too_long: は%{count}文字以下に設定して下さい。
+            explanation:
+              blank: を入力してください。
+              too_short: は%{count}文字以上に設定して下さい。
+              too_long: は%{count}文字以下に設定して下さい。
+
+
+
+    attributes:
+      food:
+        name: 食品名
+        calorie: カロリー
+        protein: タンパク質
+        fat: 脂質
+        carbohydrate: 炭水化物
+        explanation: 説明
