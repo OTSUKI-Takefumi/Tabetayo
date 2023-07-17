@@ -2,6 +2,13 @@
    <div class="col-8 m-0 mb-3">
       <h3 class="mb-5">食品編集</h3>
 <%= form_with model:@food,url: food_path(@food.id),local: true do |f| %>
+
+    <div class="mb-3">
+    <%= f.label :image,"画像" %><br />
+    <%= f.file_field :image %>
+        
+    </div>
+
   <div class="mb-3">
     <%= f.label :name,"食品名" %><br />
     <%= f.text_field :name,class:"form-control",placeholder:"例：バナナ"%>

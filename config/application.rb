@@ -10,7 +10,7 @@ module Foodlog
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
-
+    config.paths.add 'lib', eager_load: true # 追加
     #nnum関連
     config.i18n.default_locale = :ja
 

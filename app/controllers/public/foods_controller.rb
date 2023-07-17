@@ -14,6 +14,7 @@ class Public::FoodsController < ApplicationController
   def create
     @food = Food.new(food_params)
     @food.user_id = current_user.id
+    @tags = Vision.get_image_data(food_params[:image])
     if @food.save
       flash[:notice] =  "#{@food.name}の登録に成功しました。"
       redirect_to foods_path
@@ -64,6 +65,6 @@ class Public::FoodsController < ApplicationController
 
 
   def food_params
-    params.require(:food).permit(:name, :calorie, :protein, :fat, :carbohydrate, :explanation)
+    params.require(:food).permit(:name, :calorie, :protein, :fat, :carbohydrate, :explanation, :image)
   end
 end
