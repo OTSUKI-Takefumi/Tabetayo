@@ -14,8 +14,12 @@ class Public::FoodsController < ApplicationController
   def create
     @food = Food.new(food_params)
     @food.user_id = current_user.id
-    @tags = Vision.get_image_data(food_params[:image])
     if @food.save
+      #画像API
+      tags = Vision.get_image_data(@food.image)
+      tags.each do |tag|
+          @food.tags.create(name: tag)
+      end
       flash[:notice] =  "#{@food.name}の登録に成功しました。"
       redirect_to foods_path
     else

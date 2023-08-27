@@ -7,7 +7,6 @@ before_action :authenticate_admin!
   end
 
   def show
-
     @food = Food.find(params[:id])
 
   end

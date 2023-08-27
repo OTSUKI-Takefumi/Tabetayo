@@ -23,7 +23,7 @@
             <th>タンパク質(g)</th>
             <th>脂質(g)</th>
             <th>炭水化物(g)</th>
-            <th>タグ</th>
+            <th>画像とタグ</th>
              <th></th>
           </tr>
         </thead>
@@ -35,7 +35,12 @@
           <td><%= food.protein.round(1) %></td>
           <td><%= food.fat.round(1) %></td>
           <td><%= food.carbohydrate.round(1) %></td>
-          <td><%= food.explanation %></td>
+          <td>
+          <%= image_tag food.image, size: "350x250", style: "background-size: cover; background-position: center;" %>
+          <% food.tags.each do |tag| %>
+              <%= tag.name %>
+          <% end %>
+          </td>
           <td><%= link_to "削除", food_path(food.id), data: {turbo_method: :delete, turbo_confirm: "本当に削除しますか？\r\n削除すると今まで登録していた「#{h(food.name)}」に関する食事内容がすべて削除されます。"},class: "btn btn-danger" %></td>
           <% end %>
         </tr>

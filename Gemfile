@@ -81,7 +81,6 @@ gem 'chartkick'
 gem 'jquery-rails'
 
 #デプロイ
-gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
